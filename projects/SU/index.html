@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://unpkg.com/98.css">
+	<link rel="stylesheet" href="index.css">
+	<title>Status: Unknown</title>
+</head>
+<body>
+	<div class="window" style="margin: 0px; width: fit-content; top: 32px; left: 40px; transform: translate(0px); position: absolute;">
+		<div class="title-bar">
+			<div class="title-bar-text">
+				Inventory
+			</div>
+		</div>
+		<div class="window-body" style="margin: 2px;">
+			<div class="sunken-panel">
+				<table class="interactive" width="100%">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th width="1px">Count</th>
+							<th width="80px">Type</th>
+						</tr>
+					</thead>
+					<tbody id="item-list">
+					</tbody>
+				</table>
+				<button onclick="getItemInfo()">Info</button><button onclick="discardItem()">Discard</button><button onclick="useItem()">Use</button>
+			</div>
+		</div>
+	</div>
+	<div class="window" style="margin: 0px; width: fit-content; top: 28px; left: 286px; transform: translate(0px); position: absolute;">
+		<div class="title-bar">
+			<div class="title-bar-text">
+				Actions
+			</div>
+		</div>
+		<div class="window-body" style="margin: 2px;">
+			<div style="width: 75px; display: inline-block;"></div><button id="go-north" onclick="goNorth()">Go North</button><br/>
+			<button id="go-west" onclick="goWest()">Go West</button><button onclick="getLocationInfo()">Loc. Info</button><button id="go-east" onclick="goEast()">Go East</button><br/>
+			<div style="width: 75px; display: inline-block;"></div><button id="go-south" onclick="goSouth()">Go South</button>
+		</div>
+	</div>
+	<div class="window" style="margin: 0px; width: fit-content; top: 135px; left: 290px; transform: translate(0px); position: absolute;">
+		<div class="title-bar">
+			<div class="title-bar-text">
+				Notepad
+			</div>
+			<div class="title-bar-controls">
+				<button aria-label="Minimize"></button>
+				<button aria-label="Maximize"></button>
+				<button aria-label="Close"></button>
+			</div>
+		</div>
+		<ul class="menubar">
+			<li>File</li>
+			<li>Edit</li>
+			<li>Search</li>
+			<li>Help</li>
+		</ul>
+		<textarea cols="80" rows="20" style="overflow: scroll;"></textarea>
+	</div>
+	<div id="info-window" class="window" style="width: 250px">
+		<div class="title-bar">
+			<div class="title-bar-text">
+				Info
+			</div>
+		</div>
+		<div class="window-body">
+			<p id="info-text"></p>
+		</div>
+		<div class="status-bar">
+			<p class="status-bar-field">Status: Unknown</p>
+			<p class="status-bar-field" id="location-indicator">Void</p>
+		</div>
+	</div>
+	<div class="window" id="battle-ui" style="width: fit-content; top: 50px; left: 50px;">
+		<div class="title-bar">
+			<div class="title-bar-text">
+				Battle - Untitled Document*
+			</div>
+		</div>
+		<canvas width="250" id="battle-canvas" style="image-rendering: pixelated; padding-top: 2px;"></canvas>
+		<div class="status-bar">
+			<p class="status-bar-field" id="HP-status">
+				HP: 20
+			</p>
+			<p class="status-bar-field">
+				AP: 0
+			</p>
+			<p class="status-bar-field">
+				SE: None
+			</p>
+		</div>
+	</div>
+	<div id="taskbar">
+		<button class="start-button"></button>
+		<span class="seperator"></span>
+		<span class="seperator"></span>
+		<span style="flex-grow: 1;"></span>
+		<span class="seperator"></span>
+		<div id="tray">
+			<p>8:03 AM</p>
+		</div>
+	</div>
+	<script src="index.js"></script>
+</body>
+</html>

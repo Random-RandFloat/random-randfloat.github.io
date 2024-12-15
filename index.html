@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Website</title>
+	<link rel="stylesheet" href="https://unpkg.com/7.css" />
+	<style>
+		.project-title {
+			font-size: 1.5em;
+		}
+
+		.project-description {
+			margin-left: 2em;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="window active">
+		<div class="title-bar" aria-label="Main Window">
+			<div class="title-bar-text"><img src="favicon.ico"
+					style="vertical-align: text-top; margin-right: 8px;">Website</div>
+			<div class="title-bar-controls">
+				<button aria-label="Help" onclick="showAboutWindow()"></button>
+				<button aria-label="Maximize" disabled></button>
+				<button aria-label="Close" onclick=""></button>
+			</div>
+		</div>
+		<div class="window-body">
+			<section class="tabs" style="margin-top: 2px;">
+				<menu role="tablist">
+					<button role="tab" aria-controls="home-tab" aria-selected="true">Home</button>
+					<button role="tab" aria-controls="projects-tab">Projects</button>
+					<button role="tab" aria-controls="secrets-tab" disabled>Secrets</button>
+				</menu>
+				<article role="tabpanel" id="home-tab"
+					style="margin: 0px; height: calc(100vh - 129px); overflow-y: auto;">
+					<p>I'm a game development enthusiast. I enjoy programming, making 2D art, making 3D art, and playing
+						video games. I
+						particularly enjoy Valve's titles, Undertale, Deltarune, and a bunch of others I couldn't be
+						bothered to list. I'm also weird &mdash; which isn't a <i>bad</i> thing &mdash; and am a furry
+						(Which some might consider being weird).
+					</p>
+				</article>
+				<article role="tabpanel" id="projects-tab"
+					style="margin: 0px; height: calc(100vh - 129px); overflow-y: auto;" hidden>
+					<p>Here I've put a fair few of my different projects. If the button says "try" then it's hosted here
+						on my website, if it says "go" then it's a link to an external site, and if it says "download"
+						then it will directly download the project.</p>
+					<div class="searchbox">
+						<input type="search" placeholder="Search" id="project-search" onsubmit="searchProjects()">
+						<button aria-label="search" onclick="searchProjects()"></button>
+					</div>
+					<div id="projects" style="margin-top: 1em;">
+						<div class="project">
+							<div class="project-title">Bomb Broom</div>
+							<p class="project-description">Has absolutely nothing to do with Minesweeper nuh uh.</p>
+							<a href="projects/bombbroom"><button>Try</button></a>
+						</div>
+						<hr>
+						<div class="project">
+							<div class="project-title">Deltasymbols</div>
+							<p class="project-description">A tool for generating alien looking symbols from a string.
+							</p>
+							<a href="projects/deltasymbols"><button>Try</button></a>
+						</div>
+						<hr>
+						<div class="project">
+							<div class="project-title">Dodge</div>
+							<p class="project-description">A html5 bullet hell game where you have to try to survive as
+								long as possible.</p>
+							<a href="projects/dodge"><button>Try</button></a>
+						</div>
+						<hr>
+						<div class="project">
+							<div class="project-title">Fish</div>
+							<p class="project-description">Fish.</p>
+							<a href="projects/fish"><button>Fish</button></a>
+						</div>
+						<hr>
+						<div class="project">
+							<div class="project-title">MOSS v2</div>
+							<p class="project-description">A second version of MOSS... I tried to make it better but
+								ended up making it far more inferior to the original.</p>
+							<a href="projects/moss"><button>Try</button></a>
+						</div>
+						<hr>
+						<div class="project">
+							<div class="project-title">MOSS</div>
+							<p class="project-description">A terminal simulator which I made for fun. The meaning of the
+								acronym MOSS has been lost to time... I'm serious, I forgot what it meant.</p>
+							<a href="projects/moss1.0"><button>Try</button></a>
+						</div>
+						<hr>
+						<div class="project">
+							<div class="project-title">Paintr</div>
+							<p class="project-description">I'm a paintr!</p>
+							<a href="projects/paintr"><button>Try</button></a>
+						</div>
+						<hr>
+						<div class="project">
+							<div class="project-title">Raytracer</div>
+							<p class="project-description">A tech demo of sorts, a raytracer written completely in
+								javascript! Yes it kinda sucks beyond the neat factor.</p>
+							<a href="projects/raytracer"><button>Try</button></a>
+						</div>
+						<hr>
+						<div class="project">
+							<div class="project-title">Status: Unknown</div>
+							<p class="project-description">A small html5 game that I never finished. It's a text-based
+								RPG with graphical battles,
+								also it's themed like Windows 98.</p>
+							<a href="projects/SU"><button>Try</button></a>
+						</div>
+					</div>
+				</article>
+				<article role="tabpanel" id="secrets-tab"
+					style="margin: 0px; height: calc(100vh - 129px); overflow-y: auto;" hidden>
+					<p>I have evil plans for destroying the world.</p>
+					<img src="images/hair.png"
+						alt='An image of a womain with their hair sticking out to the side with the text "hair" on it.'>
+				</article>
+			</section>
+		</div>
+		<div class="status-bar">
+			<p class="status-bar-field">Press F1 for help</p>
+		</div>
+	</div>
+	<div class="window active is-bright glass" id="about-window" role="dialog" aria-labelledby="about-title">
+		<div class="title-bar" aria-label="About Window">
+			<div class="title-bar-text">Help</div>
+			<div class="title-bar-controls">
+				<button aria-label="Close" onclick="history.back()"></button>
+			</div>
+		</div>
+		<div class="window-body has-space" style="width: 400px;">
+			<p>Website for my projects and stuff to live. It's styled like Windows 7 because it looks good, that's
+				pretty much the only reason since I never grew up with Windows 7. (At least that I can remember)</p>
+			<p>If you want to reach me, here are some of my social media accounts.</p>
+
+			<label>Bluesky (Projects): </label><a href="https://bsky.app/profile/random-randfloat.bsky.social"
+				id="bsky-projects-account">@random-randfloat.bsky.social</a><br>
+
+			<label>Bluesky (Personal): </label><a href="https://bsky.app/profile/random-randfur.bsky.social"
+				id="bsky-personal-account">@random-randfur.bsky.social</a>
+		</div>
+		<footer style="text-align: right;">
+			<button onclick="history.back()">Ok</button>
+		</footer>
+	</div>
+	<script src="index.js"></script>
+</body>
+
+</html>

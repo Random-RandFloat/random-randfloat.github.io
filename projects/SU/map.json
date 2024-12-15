@@ -1,0 +1,359 @@
+{
+	"0,0": {
+		"Name": "Closet",
+		"Info": "You're in a dimly lit closet, papers littering the floor. A box labelled \"LOST AND FOUND\" sits in the corner.",
+		"Flags": {},
+		"Directions": {
+			"North": "Open",
+			"East": "Blocked",
+			"South": "Blocked",
+			"West": "Blocked"
+		},
+		"Events": {
+			"UseItem": {
+				"Hand": [
+					{
+						"Action": "LostAndFound"
+					}
+				]
+			}
+		}
+	},
+	"0,1": {
+		"Name": "Hall",
+		"Info": "You're in a hallway, light peeking in through cracks of the boarded up windows.",
+		"Flags": {
+			"Secret": false,
+			"WindowsOpen": false
+		},
+		"Directions": {
+			"North": "Blocked",
+			"East": "Open",
+			"South": "Open",
+			"West": "Open"
+		},
+		"Events": {
+			"UseItem": {
+				"Knife": [
+					{
+						"Action": "GiveItem",
+						"ID": "Crowbar",
+						"Count": 1,
+						"Conditions": [
+							{"Type":"RoomFlagEquals","ID":"Secret","Value":false}
+						]
+					},
+					{
+						"Action": "ShowInfo",
+						"Text": "You pry up a floorboard using the Knife and find a Crowbar. Wonder what it's doing here?",
+						"Conditions": [
+							{"Type":"RoomFlagEquals","ID":"Secret","Value":false}
+						]
+					},
+					{
+						"Action": "ShowInfo",
+						"Text": "There's nothing to use that on here.",
+						"Conditions": [
+							{"Type":"RoomFlagEquals","ID":"Secret","Value":true}
+						]
+					},
+					{
+						"Action": "SetRoomFlag",
+						"ID": "Secret",
+						"Value": true
+					}
+				],
+				"Crowbar": [
+					{
+						"Action": "ShowInfo",
+						"Text": "You pry off the boards on the windows.",
+						"Conditions": [
+							{"Type":"RoomFlagEquals","ID":"WindowsOpen","Value":false}
+						]
+					},
+					{
+						"Action": "SetDirection",
+						"Direction": "North",
+						"State": "Open",
+						"Conditions": [
+							{"Type":"RoomFlagEquals","ID":"WindowsOpen","Value":false}
+						]
+					},
+					{
+						"Action": "ShowInfo",
+						"Text": "There's nothing to use that on here.",
+						"Conditions": [
+							{"Type":"RoomFlagEquals","ID":"WindowsOpen","Value":true}
+						]
+					},
+					{
+						"Action": "SetRoomFlag",
+						"ID": "WindowsOpen",
+						"Value": true
+					}
+				]
+			}
+		}
+	},
+	"-1,1": {
+		"Name": "Hall End",
+		"Info": "To your west there's a locked door, a small container lies beside the door.",
+		"Directions": {
+			"North": "Blocked",
+			"East": "Open",
+			"South": "Blocked",
+			"West": "Locked"
+		},
+		"Flags": {
+			"ContainerLooted": false
+		},
+		"Events": {
+			"UseItem": {
+				"Hand": [
+					{
+						"Action": "GiveItem",
+						"ID": "Knife",
+						"Count": 1,
+						"Conditions": [
+							{"Type": "RoomFlagEquals", "ID": "ContainerLooted", "Value": false}
+						]
+					},
+					{
+						"Action": "ShowInfo",
+						"Text": "The container is empty.",
+						"Conditions": [
+							{"Type": "RoomFlagEquals", "ID": "ContainerLooted", "Value": true}
+						]
+					},
+					{
+						"Action": "SetRoomFlag",
+						"ID": "ContainerLooted",
+						"Value": true
+					}
+				],
+				"Hall Key": [
+					{
+						"Action": "TakeItem",
+						"ID": "Hall Key",
+						"Count": 1
+					},
+					{
+						"Action": "SetDirection",
+						"Direction": "West",
+						"State": "Open"
+					},
+					{
+						"Action": "ChangeRoomInfo",
+						"Text": "To your west there's a door, a small container lies beside the door."
+					},
+					{
+						"Action": "ShowInfo",
+						"Text": "Unlocked the door"
+					}
+				]
+			}
+		}
+	},
+	"1,1": {
+		"Name": "Living Room",
+		"Info": "You're in what seems to be a living room. A couch sitting in the middle of the room, papers strewn across the floor.",
+		"Flags": {},
+		"Directions": {
+			"North": "Blocked",
+			"East": "Blocked",
+			"South": "Open",
+			"West": "Open"
+		}
+	},
+	"1,0": {
+		"Name": "Kitchen",
+		"Info": "You're in a kitchen. random ingredients are scattered on the counters, some even on the floor. Light spills in through an unboarded window. A singular drawer is tied shut with a plastic tie.",
+		"Flags": {
+			"ContainerLooted": false
+		},
+		"Directions": {
+			"North": "Open",
+			"East": "Blocked",
+			"South": "Blocked",
+			"West": "Blocked"
+		},
+		"Events": {
+			"UseItem": {
+				"Knife": [
+					{
+						"Action": "GiveItem",
+						"ID": "Hall Key",
+						"Count": 1,
+						"Conditions": [
+							{"Type": "RoomFlagEquals", "ID": "ContainerLooted", "Value": false}
+						]
+					},
+					{
+						"Action": "ShowInfo",
+						"Text": "There's nothing to use that on here.",
+						"Conditions": [
+							{"Type": "RoomFlagEquals", "ID": "ContainerLooted", "Value": true}
+						]
+					},
+					{
+						"Action": "SetRoomFlag",
+						"ID": "ContainerLooted",
+						"Value": true
+					},
+					{
+						"Action": "ChangeRoomInfo",
+						"Text": "You're in a kitchen. random ingredients are scattered on the counters, some even on the floor. Light spills in through an unboarded window."
+					}
+				]
+			}
+		}
+	},
+	"-2,1": {
+		"Name": "Staircase",
+		"Info": "You're on a staircase down to a lower level, it seems to stretch on for what seems like miles.",
+		"Flags": {},
+		"Directions": {
+			"North": "Blocked",
+			"East": "Open",
+			"South": "Blocked",
+			"West": "Open"
+		}
+	},
+	"-3,1": {
+		"Name": "Underground Landing",
+		"Info": "The room appears to be under renovations, or at least was. A flashlight lights up the room.",
+		"Flags": {
+			"FlashlightAquired": false
+		},
+		"Directions": {
+			"North": "Blocked",
+			"East": "Open",
+			"South": "Blocked",
+			"West": "Open"
+		},
+		"Events": {
+			"UseItem": {
+				"Hand": [
+					{
+						"Action": "GiveItem",
+						"ID": "Flashlight",
+						"Count": 1,
+						"Conditions": [
+							{"Type":"RoomFlagEquals", "ID": "FlashlightAquired", "Value": false}
+						]
+					},
+					{
+						"Action": "ShowInfo",
+						"Text": "There's nothing to use that on here.",
+						"Conditions": [
+							{"Type":"RoomFlagEquals", "ID": "FlashlightAquired", "Value": true}
+						]
+					},
+					{
+						"Action": "SetRoomFlag",
+						"ID": "FlashlightAquired",
+						"Value": true
+					},
+					{
+						"Action": "ChangeRoomInfo",
+						"Text": "The room appears to be under renovations, or at least was."
+					}
+				]
+			}
+		}
+	},
+	"-4,1": {
+		"Name": "Elevator",
+		"Info": "You see a large elevator leading up, it may be your ticket out of here.",
+		"Flags": {
+			"EncounterOccurred": false
+		},
+		"Directions": {
+			"North": "Blocked",
+			"East": "Open",
+			"South": "Blocked",
+			"West": "Blocked"
+		},
+		"Events": {
+			"UseItem": {
+				"Hand": [
+					{
+						"Action": "Teleport",
+						"Room": "-4,100"
+					},
+					{
+						"Action": "ShowInfo",
+						"Text": "You take the elevator up."
+					}
+				]
+			},
+			"RoomEntered": [
+				{
+					"Action": "Encounter",
+					"ID": "Headless Rifleman",
+					"Conditions": [
+						{"Type":"RoomFlagEquals","ID":"EncounterOccurred","Value":false}
+					]
+				},
+				{
+					"Action": "SetRoomFlag",
+					"ID": "EncounterOccurred",
+					"Value": true
+				}
+			]
+		}
+	},
+	"-4,100": {
+		"Name": "Elevator",
+		"Info": "You see a large elevator leading down.",
+		"Directions": {
+			"North": "Blocked",
+			"East": "Open",
+			"South": "Blocked",
+			"West": "Blocked"
+		},
+		"Events": {
+			"UseItem": {
+				"Hand": [
+					{
+						"Action": "Teleport",
+						"Room": "-4,1"
+					},
+					{
+						"Action": "ShowInfo",
+						"Text": "You take the elevator down."
+					}
+				]
+			}
+		}
+	},
+	"-3,100": {
+		"Name": "Elevator",
+		"Info": "You see a large elevator leading down.",
+		"Directions": {
+			"North": "Blocked",
+			"East": "Blocked",
+			"South": "Blocked",
+			"West": "Blocked"
+		},
+		"Events": {
+			"RoomEntered": [
+				{
+					"Action": "Encounter",
+					"ID": "Headless Rifleman"
+				}
+			]
+		}
+	},
+	"0,2": {
+		"Name": "Outside",
+		"Info": "You feel a cool breeze on your skin. Oh, also you can only go back, because I'm lazy.",
+		"Flags": {},
+		"Directions": {
+			"North": "Blocked",
+			"East": "Blocked",
+			"South": "Open",
+			"West": "Blocked"
+		}
+	}
+}
