@@ -1,0 +1,26 @@
+html,
+button {
+	cursor: url("images/cursors/windows7_arrow.cur"), auto;
+}
+
+input[type="search"] {
+	cursor: url("images/cursors/windows7_select.cur"), auto;
+}
+
+p,
+.title-bar-text,
+.project-title {
+	user-select: none;
+}
+
+a {
+	cursor: url("images/cursors/windows7_link.cur"), auto;
+}
+
+.project-title {
+	font-size: 1.5em;
+}
+
+.project-description {
+	margin-left: 2em;
+}

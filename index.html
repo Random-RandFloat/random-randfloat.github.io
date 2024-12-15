@@ -6,15 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Website</title>
 	<link rel="stylesheet" href="https://unpkg.com/7.css" />
-	<style>
-		.project-title {
-			font-size: 1.5em;
-		}
-
-		.project-description {
-			margin-left: 2em;
-		}
-	</style>
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -50,7 +42,8 @@
 						on my website, if it says "go" then it's a link to an external site, and if it says "download"
 						then it will directly download the project.</p>
 					<div class="searchbox">
-						<input type="search" placeholder="Search" id="project-search" onsubmit="searchProjects()">
+						<input type="search" placeholder="Search" id="project-search"
+							onkeypress="if(event.key == 'Enter') {searchProjects(); blur()}">
 						<button aria-label="search" onclick="searchProjects()"></button>
 					</div>
 					<div id="projects" style="margin-top: 1em;">
@@ -103,7 +96,9 @@
 						<div class="project">
 							<div class="project-title">Raytracer</div>
 							<p class="project-description">A tech demo of sorts, a raytracer written completely in
-								javascript! Yes it kinda sucks beyond the neat factor.</p>
+								javascript! Yes it kinda sucks beyond the neat factor. EDIT: Turns out it doesn't do
+								anything, maybe this is a second attempt, but I have created a crappy raytracer in
+								javascript before.</p>
 							<a href="projects/raytracer"><button>Try</button></a>
 						</div>
 						<hr>
